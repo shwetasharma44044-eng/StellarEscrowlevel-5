@@ -144,9 +144,9 @@ async function pollTxStatus(txHash) {
 }
 
 async function run() {
-  console.log("Generating 23 keypairs...");
+  console.log("Generating 55 keypairs...");
   const keypairs = [];
-  for (let i = 0; i < 23; i++) {
+  for (let i = 0; i < 55; i++) {
     keypairs.push(Keypair.random());
   }
 
@@ -164,26 +164,15 @@ async function run() {
 
   const transactions = [];
 
-  // Group keypairs into projects
-  // We have 8 projects.
-  // Proj 1: 0, 1, 2
-  // Proj 2: 3, 4, 5
-  // Proj 3: 6, 7, 8
-  // Proj 4: 9, 10, 11
-  // Proj 5: 12, 13, 14
-  // Proj 6: 15, 16, 17
-  // Proj 7: 18, 19, 20
-  // Proj 8: 21, 22, 21 (Client is also Arbiter)
-  const groups = [
-    { client: keypairs[0], freelancer: keypairs[1], arbiter: keypairs[2] },
-    { client: keypairs[3], freelancer: keypairs[4], arbiter: keypairs[5] },
-    { client: keypairs[6], freelancer: keypairs[7], arbiter: keypairs[8] },
-    { client: keypairs[9], freelancer: keypairs[10], arbiter: keypairs[11] },
-    { client: keypairs[12], freelancer: keypairs[13], arbiter: keypairs[14] },
-    { client: keypairs[15], freelancer: keypairs[16], arbiter: keypairs[17] },
-    { client: keypairs[18], freelancer: keypairs[19], arbiter: keypairs[20] },
-    { client: keypairs[21], freelancer: keypairs[22], arbiter: keypairs[21] }
-  ];
+  // Group keypairs dynamically into 18 projects (18 * 3 = 54 wallets utilized)
+  const groups = [];
+  for (let i = 0; i < 18; i++) {
+    groups.push({
+      client: keypairs[i * 3],
+      freelancer: keypairs[i * 3 + 1],
+      arbiter: keypairs[i * 3 + 2]
+    });
+  }
 
   for (let pIdx = 0; pIdx < groups.length; pIdx++) {
     const { client, freelancer, arbiter } = groups[pIdx];
@@ -294,10 +283,10 @@ async function run() {
 
   // Generate proof Markdown file
   let mdContent = `# Stellar Testnet Escrow Transaction Proof\n\n`;
-  mdContent += `This file serves as proof of the simulated live transaction activity on the Stellar Testnet by 23 distinct generated wallets.\n\n`;
+  mdContent += `This file serves as proof of the simulated live transaction activity on the Stellar Testnet by 55 distinct generated wallets.\n\n`;
   
   mdContent += `## Generated Users (Wallets)\n\n`;
-  mdContent += `Below is the list of all 23 wallets created and funded via Stellar Friendbot:\n\n`;
+  mdContent += `Below is the list of all 55 wallets created and funded via Stellar Friendbot:\n\n`;
   mdContent += `| User # | Public Key | Friendbot Link |\n`;
   mdContent += `|---|---|---|\n`;
   keypairs.forEach((kp, idx) => {
