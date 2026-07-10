@@ -322,7 +322,7 @@ export async function resolveDispute(
 ): Promise<string> {
   const idVal = nativeToScVal(BigInt(projectId), { type: 'u64' });
   const idxVal = nativeToScVal(milestoneIndex, { type: 'u32' });
-  const resolveVal = nativeToScVal(resolveToClient, { type: 'bool' });
+  const resolveVal = nativeToScVal(resolveToClient);
 
   const txHash = await writeContract(userAddress, 'resolve_dispute', [
     Address.fromString(userAddress).toScVal(),
