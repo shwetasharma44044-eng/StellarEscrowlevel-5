@@ -140,6 +140,7 @@ export default function App() {
 
   // Load projects on startup and interval
   useEffect(() => {
+    trackEvent('landing_page_viewed', { timestamp: new Date().toISOString() });
     loadProjects();
     const interval = setInterval(loadProjects, 15000);
     return () => clearInterval(interval);
