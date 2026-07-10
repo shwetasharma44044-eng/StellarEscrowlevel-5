@@ -6,7 +6,7 @@ StellarEscrow is a production-ready milestone payment escrow protocol built on *
 
 ## 🚀 Deployed Contracts & Assets
 - **Testnet Contract Address**: `CABRYRJWNR5WVI34LSA667LTXG7NHIRJOAZASX5MTFJK5JHCAD7ILETJ`
-- **Native SAC Token Address**: `CDLZFC3SYJYDTIW6A2NDSLZDGGF45Q7JPA7V6M45A57KGS65MAUZ74AF` (XLM)
+- **Native SAC Token Address**: `CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC` (XLM)
 - **RPC URL**: `https://soroban-testnet.stellar.org`
 - **Network Passphrase**: `Test SDF Network ; September 2015`
 
