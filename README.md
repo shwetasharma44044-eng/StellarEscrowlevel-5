@@ -370,6 +370,22 @@ This is a small update added for AB testing purposes to verify pipeline triggers
 - All responses exported to Excel for record-keeping: [Excel Sheet Link](https://docs.google.com/spreadsheets/d/1oi91tFBPbNROr84q7bpsj2293100Dg0jBBx0nwfBTdY/edit?usp=sharing)
 - Total responses: 55, Average rating: 4.8/5
 
+#### User Suggestions Log
+Below is a log of feature suggestions and feedback extracted directly from the user responses:
+
+| Name | Wallet Address | User Feature Suggestion |
+|---|---|---|
+| Rohan Kumar | `GDDI4YI3...YRGC22` | Wallet address copy button lets users copy the address in one click instead of manual selection. |
+| Rishi Singh | `GB53NBNY...JIWY` | Toast notification for transactions shows a small popup instantly on success or failure. |
+| Ranjan Mehta | `GCHV2WCH...XJVN` | Button loading state during transaction disables the button and shows a spinner to prevent double clicks. |
+| Nitish Sharma | `GAWG4DRZ...CTQ2R` | Copied tooltip on click shows a quick "Copied!" confirmation after copying. |
+| Abhishek Kant | `GDFQXTWF...2D62` | Specific loading text replaces "Loading..." with "Confirming on Stellar network..." for more clarity. |
+| Suraj pathak | `GAGOXEQI...PF7L` | Better empty state message guides users with "Create your first project to get started" instead of just "No projects". |
+| Rohit sharma | `GBMF3JE3...K44D` | Relative timestamp format shows "2 min ago" instead of a raw date and time. |
+| Rohan shakya | `GDXCPO2L...YG635` | Input placeholder hints add helpful examples like "Starts with G..." in the wallet address field. |
+| riya Kumari | `GCCOJRSK...WXYO` | Dark and light mode toggle lets users switch the app's theme with one button. |
+| Saurabh kumar | `GBZSDOYI...BVCN` | Color coded status badges use yellow for pending, green for approved, and red for disputed for visual clarity. |
+
 ### Product Iteration Based on Feedback
 (This table is mandatory — include real git commit links)
 
