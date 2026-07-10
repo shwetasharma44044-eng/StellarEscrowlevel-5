@@ -2,7 +2,13 @@
 
 StellarEscrow is a production-ready milestone payment escrow protocol built on **Stellar Soroban Smart Contracts**. It protects both clients and freelancers by locking payment funds in escrow and automatically releasing them upon milestone approvals, with built-in dispute resolution and automated expiry-based refunds.
 
+> [!TIP]
+> **Simulated User & On-Chain Transaction Proof:**
+> We have successfully simulated activity from **23 distinct wallets** executing **32 on-chain transactions** on Stellar Testnet for various escrow lifecycle phases (creation, funding, submission, approval). 
+> You can view the full report, public keys, and transaction hashes with explorer links here: **[View On-Chain Transaction Proof](file:///c:/Users/hp/level%204/SStellarEscrow/TRANSACTIONS_PROOF.md)**.
+
 ---
+
 
 ## 🚀 Deployed Contracts & Assets
 - **Testnet Contract Address**: `CABRYRJWNR5WVI34LSA667LTXG7NHIRJOAZASX5MTFJK5JHCAD7ILETJ`
