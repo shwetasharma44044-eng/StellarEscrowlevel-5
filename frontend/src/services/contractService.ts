@@ -21,6 +21,12 @@ export const TOKEN_ADDRESS = import.meta.env.VITE_TOKEN_ADDRESS || 'CDLZFC3SYJYD
 
 export const server = new rpc.Server(RPC_URL);
 
+console.log('--- StellarEscrow Diagnostic Info ---');
+console.log('Contract ID:', CONTRACT_ID);
+console.log('Token Address:', TOKEN_ADDRESS);
+console.log('RPC URL:', RPC_URL);
+console.log('-------------------------------------');
+
 // Initialize Wallets Kit as static
 StellarWalletsKit.init({
   network: Networks.TESTNET,
