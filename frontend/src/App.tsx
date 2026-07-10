@@ -1025,6 +1025,16 @@ function ProjectCard({
           const isExpired = isMilestoneExpired(milestone.deadline);
           const actionKey = (name: string) => `${project.id}-${index}-${name}`;
           const isCurrentLoading = (name: string) => actionLoading === actionKey(name);
+          
+          const getDeadlineStatus = (deadline: number) => {
+            const now = Math.floor(Date.now() / 1000);
+            const daysDiff = Math.ceil((deadline - now) / 86400);
+            if (daysDiff < 0) return { text: `Overdue by ${Math.abs(daysDiff)} days`, color: 'text-red-400 bg-red-400/10 border-red-500/20' };
+            if (daysDiff === 0) return { text: 'Due Today', color: 'text-yellow-400 bg-yellow-400/10 border-yellow-500/20' };
+            if (daysDiff <= 3) return { text: `Due in ${daysDiff} days`, color: 'text-orange-400 bg-orange-400/10 border-orange-500/20' };
+            return null;
+          };
+          const deadlineBadge = getDeadlineStatus(milestone.deadline);
 
           return (
             <div key={index} className="p-4 bg-darkBg/40 border border-darkBorder/60 rounded-xl space-y-4">
@@ -1044,6 +1054,11 @@ function ProjectCard({
                       <Clock size={12} className="mr-1 text-accent-500" />
                       Deadline: {new Date(milestone.deadline * 1000).toLocaleDateString()}
                     </span>
+                    {deadlineBadge && milestone.status !== 5 && milestone.status !== 6 && (
+                      <span className={`px-2 py-0.5 rounded text-[9px] font-bold border uppercase tracking-wider ${deadlineBadge.color}`}>
+                        {deadlineBadge.text}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <div>
