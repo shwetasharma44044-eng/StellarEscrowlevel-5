@@ -977,13 +977,13 @@ function ProjectCard({
 
   const getStatusLabel = (status: number) => {
     switch (status) {
-      case 0: return { text: 'Created', color: 'bg-gray-700 text-gray-300' };
-      case 1: return { text: 'Funded', color: 'bg-blue-600/30 text-blue-400 border border-blue-500/20' };
-      case 2: return { text: 'Submitted', color: 'bg-yellow-600/30 text-yellow-400 border border-yellow-500/20' };
-      case 4: return { text: 'Disputed', color: 'bg-red-600/30 text-red-400 border border-red-500/20' };
-      case 5: return { text: 'Released', color: 'bg-green-600/30 text-green-400 border border-green-500/20' };
-      case 6: return { text: 'Refunded', color: 'bg-purple-600/30 text-purple-400 border border-purple-500/20' };
-      default: return { text: 'Unknown', color: 'bg-gray-500 text-white' };
+      case 0: return { text: 'Created', color: 'bg-gray-700 text-gray-300', tooltip: 'Waiting for client to lock funds into the escrow contract.' };
+      case 1: return { text: 'Funded', color: 'bg-blue-600/30 text-blue-400 border border-blue-500/20', tooltip: 'Funds are securely locked on-chain. Freelancer should start work.' };
+      case 2: return { text: 'Submitted', color: 'bg-yellow-600/30 text-yellow-400 border border-yellow-500/20', tooltip: 'Work submitted by freelancer. Waiting for client review.' };
+      case 4: return { text: 'Disputed', color: 'bg-red-600/30 text-red-400 border border-red-500/20', tooltip: 'Payment is disputed and locked. Awaiting arbiter resolution.' };
+      case 5: return { text: 'Released', color: 'bg-green-600/30 text-green-400 border border-green-500/20', tooltip: 'Funds successfully released to the freelancer.' };
+      case 6: return { text: 'Refunded', color: 'bg-purple-600/30 text-purple-400 border border-purple-500/20', tooltip: 'Funds have been returned to the client.' };
+      default: return { text: 'Unknown', color: 'bg-gray-500 text-white', tooltip: '' };
     }
   };
 
@@ -1086,7 +1086,10 @@ function ProjectCard({
                   </div>
                 </div>
                 <div>
-                  <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${status.color}`}>
+                  <span 
+                    title={status.tooltip}
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-bold cursor-help ${status.color}`}
+                  >
                     {status.text}
                   </span>
                 </div>
