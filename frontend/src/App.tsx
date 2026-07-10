@@ -730,7 +730,7 @@ export default function App() {
 
       {/* Floating Feedback Widget */}
       <button 
-        onClick={() => setFeedbackOpen(true)}
+        onClick={() => window.open("https://docs.google.com/forms/d/e/1FAIpQLSexdbGV5XTjwVFyK-eN7243MU9HTFEGhOVUWFOxzD5QBU1Tjg/viewform?pli=1&pli=1", "_blank")}
         className="fixed bottom-6 right-6 z-40 flex items-center space-x-2 px-4 py-2.5 bg-accent-600 hover:bg-accent-700 text-white rounded-full shadow-2xl hover:scale-105 transition duration-200"
       >
         <MessageSquare size={16} />
