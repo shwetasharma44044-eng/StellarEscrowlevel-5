@@ -185,8 +185,13 @@ export default function App() {
           throw new Error('Milestone deadline is required');
         }
         
+        const parsedDate = new Date(m.deadline);
+        if (isNaN(parsedDate.getTime())) {
+          throw new Error(`Milestone deadline is invalid`);
+        }
+
         // Convert deadline to Unix timestamp in seconds
-        const deadlineTimestamp = Math.floor(new Date(m.deadline).getTime() / 1000);
+        const deadlineTimestamp = Math.floor(parsedDate.getTime() / 1000);
         if (deadlineTimestamp <= Math.floor(Date.now() / 1000)) {
           throw new Error('Deadline must be in the future');
         }
@@ -536,8 +541,9 @@ export default function App() {
                             </div>
                             <div>
                               <input 
-                                type="datetime-local" 
+                                type="date" 
                                 required
+                                min={new Date(Date.now() + 86400000).toISOString().split('T')[0]}
                                 value={m.deadline}
                                 onChange={(e) => {
                                     const items = [...newMilestones];
@@ -546,7 +552,7 @@ export default function App() {
                                 }}
                                 className="w-full bg-darkBg border border-darkBorder rounded-lg px-3 py-2 text-sm text-gray-200 focus:outline-none focus:border-clientPurple"
                               />
-                              <p className="text-[10px] text-gray-500 mt-1">Completion deadline for this milestone.</p>
+                              <p className="text-[10px] text-gray-500 mt-1">Completion deadline for this milestone (must be tomorrow or later).</p>
                             </div>
                           </div>
                         ))}
