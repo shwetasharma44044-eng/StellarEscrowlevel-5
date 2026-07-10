@@ -581,21 +581,35 @@ export default function App() {
             )}
 
             {/* Client Projects List */}
-            {projects.filter(p => !walletAddress || p.client === walletAddress).length === 0 ? (
-              <div className="text-center py-16 border border-dashed border-darkBorder rounded-2xl bg-darkCard/20">
-                <AlertTriangle size={32} className="mx-auto text-gray-500 mb-3" />
-                <h3 className="text-md font-bold text-gray-300">No Escrow Projects Found</h3>
-                <p className="text-xs text-gray-500 mt-1 max-w-sm mx-auto">
+            {loadingProjects && projects.length === 0 ? (
+              <div className="grid grid-cols-1 gap-6">
+                {[1, 2].map((i) => <SkeletonProjectCard key={i} />)}
+              </div>
+            ) : projects.filter(p => !walletAddress || p.client === walletAddress).length === 0 ? (
+              <div className="text-center py-16 border border-dashed border-darkBorder rounded-2xl bg-darkCard/20 flex flex-col items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-darkBg border border-darkBorder flex items-center justify-center mb-4">
+                  <AlertTriangle size={24} className="text-gray-500" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-200">No Escrow Projects Found</h3>
+                <p className="text-sm text-gray-400 mt-2 max-w-md mx-auto leading-relaxed">
                   {walletAddress 
-                    ? "You haven't created any freelance payment escrows yet. Click the button above to create one." 
-                    : "Please connect your client wallet to view your freelance escrow contracts."}
+                    ? "You haven't created any freelance payment escrows yet. Securely fund your next project by creating an on-chain milestone escrow." 
+                    : "Please connect your client wallet to view and manage your freelance escrow contracts."}
                 </p>
-                {!walletAddress && (
+                {!walletAddress ? (
                   <button 
                     onClick={handleConnect} 
-                    className="mt-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-semibold rounded-lg transition"
+                    className="mt-6 px-5 py-2.5 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 border border-gray-600 text-sm font-bold text-white rounded-xl shadow-lg transition"
                   >
                     Connect Wallet
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => setCreateModalOpen(true)}
+                    className="mt-6 px-5 py-2.5 bg-clientPurple hover:bg-clientPurple/90 text-sm font-bold text-white rounded-xl shadow-lg shadow-clientPurple/20 transition flex items-center space-x-2"
+                  >
+                    <Plus size={16} />
+                    <span>Create Your First Project</span>
                   </button>
                 )}
               </div>
@@ -621,19 +635,25 @@ export default function App() {
         {/* Tab content 2: Freelancer Portal */}
         {activeTab === 'freelancer' && (
           <div className="space-y-6">
-            {projects.filter(p => !walletAddress || p.freelancer === walletAddress).length === 0 ? (
-              <div className="text-center py-16 border border-dashed border-darkBorder rounded-2xl bg-darkCard/20">
-                <AlertTriangle size={32} className="mx-auto text-gray-500 mb-3" />
-                <h3 className="text-md font-bold text-gray-300">No Assigned Projects</h3>
-                <p className="text-xs text-gray-500 mt-1 max-w-sm mx-auto">
+            {loadingProjects && projects.length === 0 ? (
+              <div className="grid grid-cols-1 gap-6">
+                {[1, 2].map((i) => <SkeletonProjectCard key={i} />)}
+              </div>
+            ) : projects.filter(p => !walletAddress || p.freelancer === walletAddress).length === 0 ? (
+              <div className="text-center py-16 border border-dashed border-darkBorder rounded-2xl bg-darkCard/20 flex flex-col items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-darkBg border border-darkBorder flex items-center justify-center mb-4">
+                  <Shield size={24} className="text-freelancerGreen/60" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-200">No Assigned Projects</h3>
+                <p className="text-sm text-gray-400 mt-2 max-w-md mx-auto leading-relaxed">
                   {walletAddress 
-                    ? "You are not designated as the freelancer on any escrow projects yet." 
-                    : "Please connect your freelancer wallet to view escrow projects assigned to you."}
+                    ? "You haven't been assigned to any escrow projects yet. Give your client your public address to get started." 
+                    : "Please connect your freelancer wallet to securely view and manage escrow projects assigned to you."}
                 </p>
                 {!walletAddress && (
                   <button 
                     onClick={handleConnect} 
-                    className="mt-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-xs font-semibold rounded-lg transition"
+                    className="mt-6 px-5 py-2.5 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 border border-gray-600 text-sm font-bold text-white rounded-xl shadow-lg transition"
                   >
                     Connect Wallet
                   </button>
@@ -820,6 +840,28 @@ export default function App() {
           </span>
         </div>
       </footer>
+    </div>
+  );
+}
+
+function SkeletonProjectCard() {
+  return (
+    <div className="bg-darkCard border border-darkBorder rounded-2xl overflow-hidden shadow-lg shadow-black/20 animate-pulse">
+      <div className="px-6 py-4 bg-gray-900/60 border-b border-darkBorder/60 flex flex-col md:flex-row md:items-center justify-between gap-3">
+        <div className="space-y-3">
+          <div className="h-4 bg-gray-800 rounded w-32"></div>
+          <div className="h-3 bg-gray-800 rounded w-48"></div>
+        </div>
+        <div className="flex flex-col items-start md:items-end gap-2">
+          <div className="h-3 bg-gray-800 rounded w-24"></div>
+          <div className="h-5 bg-gray-800 rounded w-20"></div>
+        </div>
+      </div>
+      <div className="p-5 bg-darkCard">
+        <div className="h-3 bg-gray-800 rounded w-full mb-3"></div>
+        <div className="h-3 bg-gray-800 rounded w-4/5 mb-3"></div>
+        <div className="h-3 bg-gray-800 rounded w-3/4"></div>
+      </div>
     </div>
   );
 }
