@@ -519,6 +519,7 @@ export default function App() {
         <div className="flex items-center justify-end text-[11px] text-gray-500 space-x-1 font-medium">
           <RefreshCw size={10} className={`${loadingProjects ? 'animate-spin text-accent-500' : ''}`} />
           <span>{loadingProjects ? 'Fetching chain state...' : 'Synced live with Soroban RPC'}</span>
+        </div>
         {/* Tab content 1: Client view */}
         {activeTab === 'client' && (
           <div className="space-y-6">
