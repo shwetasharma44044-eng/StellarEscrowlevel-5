@@ -411,7 +411,7 @@ Below is a log of feature suggestions and feedback extracted directly from the u
 - Decentralized DAO for community moderation
 
 ### Pitch Deck & Demo
-- Pitch deck: [PITCH_DECK_LINK]
+- Pitch deck: [StellarEscrow Pitch Deck (PowerPoint PPTX)](StellarEscrow_Pitch_Deck.pptx)
 - Demo video (full walkthrough): [YouTube Demo Video](https://youtu.be/9TsWzXOsYuQ)
 - Live deployed DApp: [StellarEscrow on Vercel](https://stellar-escrowlevel-5.vercel.app/)
 
