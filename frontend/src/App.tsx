@@ -976,6 +976,14 @@ function ProjectCard({
   setDisputeReason
 }: ProjectCardProps) {
   const isProjectArbiter = userAddress && project.arbiter === userAddress;
+  const [linkCopied, setLinkCopied] = useState(false);
+
+  const handleShareProject = () => {
+    const shareText = `I've created a secure escrow project for you on StellarEscrow. Connect your wallet here to view it: ${window.location.origin}`;
+    navigator.clipboard.writeText(shareText);
+    setLinkCopied(true);
+    setTimeout(() => setLinkCopied(false), 2000);
+  };
 
   const getStatusLabel = (status: number) => {
     switch (status) {
