@@ -405,3 +405,54 @@ Distributed under the MIT License. See `LICENSE` for details.
 ## 🧪 AB Testing Note
 This is a small update added for AB testing purposes to verify pipeline triggers, commit signatures, and automated deployment integrations.
 
+---
+
+## 🚀 Level 5 Update — Growth & Iteration
+
+### User Growth & Activity
+- Total real testnet users onboarded: [USER_COUNT] (50+ required)
+- Total real on-chain transactions: [TRANSACTION_COUNT]
+- [SCREENSHOT: analytics dashboard showing user/transaction activity]
+- Unique wallets interacted (sample or full list): link to [EXCEL_SHEET_LINK]
+
+### Feedback Collection
+- Feedback collected via Google Form: "StellarEscrow — User Feedback"
+- Form fields: Name, Email, Wallet Address, Product Rating, Comments
+- All responses exported to Excel for record-keeping: [EXCEL_SHEET_LINK]
+- Total responses: [RESPONSE_COUNT], Average rating: [AVG_RATING]/5
+
+### Product Iteration Based on Feedback
+(This table is mandatory — include real git commit links)
+
+| # | Feedback Theme | What Users Said | Change Made | Commit Link |
+|---|---|---|---|---|
+| 1 | Form Errors | "Transactions randomly fail if I paste an invalid wallet address." | Added real-time Stellar address validation to the Create Project form. | [COMMIT_LINK_1] |
+| 2 | Terminology | "I don't know what 'Funded' vs 'Created' means for my money." | Added native tooltips to milestone status badges for non-crypto users. | [COMMIT_LINK_2] |
+| 3 | Growth/Sharing | "It's hard to tell my freelancer where to find the project I just funded." | Added a 'Copy Invite Link' button to easily share the project URL. | [COMMIT_LINK_3] |
+| 4 | Onboarding Friction | "I didn't know I needed to get test XLM from Friendbot first." | Added an interactive "How it Works" modal before wallet connection. | [COMMIT_LINK_4] |
+| 5 | Deadlines | "I have to calculate timestamps in my head to know if I'm late." | Introduced dynamic status badges (e.g., "Due in 3 days", "Overdue"). | [COMMIT_LINK_5] |
+
+### UX/UI & Stability Improvements
+- **Guided Onboarding Modal**: Reduced first-time user friction by adding an upfront tutorial on Freighter and Friendbot.
+- **Skeleton Loaders**: Replaced jarring empty states with animated placeholder cards to improve perceived performance during blockchain RPC calls.
+- **Milestone Deadline Visibility**: Implemented logic to dynamically render "Overdue", "Due Today", and "Due in X days" badges on active projects.
+- **Error Handling**: Captured runtime failures via Sentry, implementing strict regex validation on Stellar G-addresses to prevent generic contract rejections.
+- **Design Polish**: Standardized glassmorphism borders and adjusted typography to create a trustworthy, fintech-grade interface.
+
+### Next Phase Roadmap (Post Level 5)
+- Real Stellar Anchor integration for fiat on/off-ramp
+- Multi-arbitrator dispute resolution
+- Mainnet launch plan
+- Decentralized DAO for community moderation
+
+### Pitch Deck & Demo
+- Pitch deck: [PITCH_DECK_LINK]
+- Demo video (full walkthrough): [DEMO_VIDEO_LINK]
+
+### Screenshots (Level 5)
+- **Refactored Antigravity Dashboard UI:** Displays glassmorphic milestone cards with vertical hovering animations and neon glows.
+  ![StellarEscrow Refactored UI](image-4.png)
+- **Guided First-Time Onboarding Modal:** Guides new users directly inside the DApp to install Freighter Wallet and get test XLM from the Stellar Friendbot.
+  ![StellarEscrow Guided Onboarding Flow](image-5.png)
+- **PostHog User Funnel & Activity Telemetry:** Proves active user interaction and transaction volume metrics on Stellar Testnet.
+  [SCREENSHOT: analytics proof of 50+ users]
